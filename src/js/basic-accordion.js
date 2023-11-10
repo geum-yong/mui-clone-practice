@@ -4,12 +4,23 @@ const toggleAccordion = (e) => {
   const selectAccordion = e.target;
 
   if (
-    !selectAccordion.classList.contains("accordion-title-box") ||
+    (!selectAccordion.classList.contains("accordion-title-box") &&
+      !selectAccordion.classList.contains("accordion-title") &&
+      !selectAccordion.classList.contains("accordion-arrow")) ||
     selectAccordion.classList.contains("disabled")
   )
     return;
 
-  const accordion = selectAccordion.parentElement.parentElement;
+  let accordion;
+
+  if (
+    selectAccordion.classList.contains("accordion-title") ||
+    selectAccordion.classList.contains("accordion-arrow")
+  ) {
+    accordion = selectAccordion.parentElement.parentElement.parentElement;
+  } else {
+    accordion = selectAccordion.parentElement.parentElement;
+  }
 
   if (accordion.classList.contains("open")) {
     accordion.classList.remove("open");
