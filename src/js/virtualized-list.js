@@ -4,38 +4,31 @@ const virtualizedList = document.getElementById("virtualizedList");
 // 아이템 전체 높이값을 갖는 div
 let totalRealList;
 
-const {
-  width: listContainerWidth,
-  height: listContainerHeight,
-  itemSize,
-  itemCount,
-  overscanCount,
-} = virtualizedList.dataset;
+const listContainerWidth = Number(virtualizedList.dataset.width);
+const listContainerHeight = Number(virtualizedList.dataset.height);
+const itemSize = Number(virtualizedList.dataset.itemSize);
+const itemCount = Number(virtualizedList.dataset.itemCount);
+const overscanCount = Number(virtualizedList.dataset.overscanCount);
 
-const data = Array.from(
-  { length: Number(itemCount) },
-  (_, index) => `Item ${index}`,
-);
-const visibleItems = Math.ceil(Number(listContainerHeight) / Number(itemSize));
+const data = Array.from({ length: itemCount }, (_, index) => `Item ${index}`);
+const visibleItems = Math.ceil(listContainerHeight / itemSize);
 
 const setInitContainerSize = () => {
   virtualizedList.style.width = `${listContainerWidth}px`;
   virtualizedList.style.height = `${listContainerHeight}px`;
 
   totalRealList = document.createElement("div");
-  totalRealList.style.height = `${Number(itemCount) * Number(itemSize)}px`;
+  totalRealList.style.height = `${itemCount * itemSize}px`;
   virtualizedList.appendChild(totalRealList);
 };
 
 const setListData = () => {
   const { scrollTop } = virtualizedList;
 
-  const start = Math.floor(scrollTop / Number(itemSize));
+  const start = Math.floor(scrollTop / itemSize);
   const end = Math.min(
-    start +
-      visibleItems +
-      (Number(itemCount) > Number(overscanCount) ? Number(overscanCount) : 0),
-    Number(itemCount),
+    start + visibleItems + (itemCount > overscanCount ? overscanCount : 0),
+    itemCount,
   );
 
   totalRealList.innerHTML = "";
@@ -43,7 +36,7 @@ const setListData = () => {
     const listItem = document.createElement("div");
     listItem.classList.add("list-item");
     listItem.style.height = `${itemSize}px`;
-    listItem.style.top = `${i * Number(itemSize)}px`;
+    listItem.style.top = `${i * itemSize}px`;
 
     listItem.innerText = data[i];
     totalRealList.appendChild(listItem);
