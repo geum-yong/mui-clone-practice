@@ -50,10 +50,9 @@ const setListData = (
   const { scrollTop } = rootDiv;
 
   const start = Math.floor(scrollTop / itemSize);
-  const end = Math.min(
-    start + visibleItems + (itemCount > overscanCount ? overscanCount : 0),
-    itemCount,
-  );
+
+  const checkOverscanCount = itemCount > overscanCount ? overscanCount : 0;
+  const end = Math.min(start + visibleItems + checkOverscanCount, itemCount);
 
   totalRealList.innerHTML = "";
   for (let i = start; i < end; i++) {
