@@ -1,5 +1,8 @@
-const listContainer = document.getElementById("virtualizedList");
-let listBox;
+// root div
+const virtualizedList = document.getElementById("virtualizedList");
+
+// 아이템 전체 높이값을 갖는 div
+let totalRealList;
 
 const {
   width: listContainerWidth,
@@ -7,7 +10,8 @@ const {
   itemSize,
   itemCount,
   overscanCount,
-} = listContainer.dataset;
+} = virtualizedList.dataset;
+
 const data = Array.from(
   { length: Number(itemCount) },
   (_, index) => `Item ${index}`,
@@ -15,16 +19,16 @@ const data = Array.from(
 const visibleItems = Math.ceil(Number(listContainerHeight) / Number(itemSize));
 
 const setInitContainerSize = () => {
-  listContainer.style.width = `${listContainerWidth}px`;
-  listContainer.style.height = `${listContainerHeight}px`;
+  virtualizedList.style.width = `${listContainerWidth}px`;
+  virtualizedList.style.height = `${listContainerHeight}px`;
 
-  listBox = document.createElement("div");
-  listBox.style.height = `${Number(itemCount) * Number(itemSize)}px`;
-  listContainer.appendChild(listBox);
+  totalRealList = document.createElement("div");
+  totalRealList.style.height = `${Number(itemCount) * Number(itemSize)}px`;
+  virtualizedList.appendChild(totalRealList);
 };
 
 const setListData = () => {
-  const { scrollTop } = listContainer;
+  const { scrollTop } = virtualizedList;
 
   const start = Math.floor(scrollTop / Number(itemSize));
   const end = Math.min(
@@ -34,7 +38,7 @@ const setListData = () => {
     Number(itemCount),
   );
 
-  listBox.innerHTML = "";
+  totalRealList.innerHTML = "";
   for (let i = start; i < end; i++) {
     const listItem = document.createElement("div");
     listItem.classList.add("list-item");
@@ -42,10 +46,10 @@ const setListData = () => {
     listItem.style.top = `${i * Number(itemSize)}px`;
 
     listItem.innerText = data[i];
-    listBox.appendChild(listItem);
+    totalRealList.appendChild(listItem);
   }
 };
 
-listContainer.addEventListener("scroll", setListData);
+virtualizedList.addEventListener("scroll", setListData);
 setInitContainerSize();
 setListData();
