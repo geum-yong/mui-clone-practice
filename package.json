@@ -2,7 +2,7 @@
   "name": "mui-clone-practice",
   "packageManager": "yarn@4.0.1",
   "scripts": {
-    "start": "live-server --open=src --entry-file=index.html"
+    "start": "live-server --entry-file=index.html"
   },
   "devDependencies": {
     "eslint": "^8.53.0",
