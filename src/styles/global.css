@@ -1,0 +1,7 @@
+@import "../components/ContentTitle/style.css";
+@import "../components/ContentDescription/style.css";
+@import "../components/VirtualizedList/style.css";
+
+#app {
+  padding: 30px;
+}
