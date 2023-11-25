@@ -3,6 +3,6 @@
   font-weight: 700;
 }
 
-.contentsTitle:not(:first-child) {
+.contentTitle:not(:first-child) {
   margin-top: 30px;
 }
