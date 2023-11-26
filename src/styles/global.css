@@ -1,0 +1,9 @@
+@import "../components/ContentTitle/style.css";
+@import "../components/ContentDescription/style.css";
+@import "../components/VirtualizedList/style.css";
+@import "../components/BasicTabs/style.css";
+@import "../components/BasicAccordion/style.css";
+
+#app {
+  padding: 30px;
+}
