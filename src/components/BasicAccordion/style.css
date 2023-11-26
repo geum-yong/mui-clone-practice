@@ -5,7 +5,9 @@
     0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   height: 40px;
-  transition: all 0.5s;
+  transition:
+    margin 0.5s,
+    height 0.5s;
   overflow: hidden;
 }
 
@@ -25,7 +27,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  transition: all 0.5s;
+  transition: padding 0.5s;
   cursor: pointer;
 }
 
@@ -44,7 +46,7 @@
   display: inline-block;
   padding: 3px;
   transform: rotate(45deg);
-  transition: all 0.5s;
+  transition: transform 0.5s;
 }
 
 .basicAccordion .accordionTitleBox.disabled .accordionArrow {
