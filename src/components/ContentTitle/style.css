@@ -1,0 +1,8 @@
+.contentTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.contentsTitle:not(:first-child) {
+  margin-top: 30px;
+}
