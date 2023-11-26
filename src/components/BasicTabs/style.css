@@ -5,18 +5,18 @@
   background-color: #fff;
 }
 
-#basicTabsBox .basic-tab {
+#basicTabsBox .basicTab {
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
 }
 
-#basicTabsBox .basic-tab.selected {
+#basicTabsBox .basicTab.selected {
   color: #1976d2;
 }
 
-#basicTabsBox .bottom-bar {
+#basicTabsBox .indicator {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -25,12 +25,12 @@
   transition: transform 0.5s;
 }
 
-.basic-tab-contents {
+.basicTabContents {
   display: none;
   padding: 24px;
   background-color: #fff;
 }
 
-.basic-tab-contents.selected {
+.basicTabContents.selected {
   display: block;
 }
